@@ -1,0 +1,108 @@
+{
+  "skill_name": "skill-workspace",
+  "version": "1.3.0",
+  "last_updated": "2026-06-09",
+  "evals": [
+    {
+      "id": 1,
+      "category": "core",
+      "prompt": "帮我找个代码格式化的 skill",
+      "expected_behavior": "走搜索流程：SkillsMP API → npx skills find → CocoLoop → GitHub → clawhub",
+      "expected_output": "搜索结果列表，包含名称、描述、stars、GitHub 链接",
+      "assertions": [
+        { "id": "a1", "text": "应先用 SkillsMP API 搜索（1.5M+ skills）" },
+        { "id": "a2", "text": "搜索失败时应降级到 npx skills find → CocoLoop → GitHub → clawhub" },
+        { "id": "a3", "text": "应展示结果并询问用户选择" }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "core",
+      "prompt": "帮我开发一个代码审查 skill",
+      "expected_behavior": "路由到 dev 子技能：先搜索→确认无现成→走开发流程",
+      "expected_output": "搜索对比表 + 开发决策 + SKILL.md 生成",
+      "assertions": [
+        { "id": "a1", "text": "必须先搜索（强制步骤）" },
+        { "id": "a2", "text": "找到时应输出对比表和缺陷分析" },
+        { "id": "a3", "text": "从零写时应保存到当前目录，不是全局" }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "core",
+      "prompt": "帮我审查一下这个 skill 的质量",
+      "expected_behavior": "路由到 review 子技能：定位 Skill → 安全审查（4步协议） → 10 维度评分",
+      "expected_output": "审查报告，含安全评级 + 120 分制评分",
+      "assertions": [
+        { "id": "a1", "text": "应先做安全审查（4步：元数据→权限→内容→typosquat）" },
+        { "id": "a2", "text": "安全评级 BLOCK 时应停止" },
+        { "id": "a3", "text": "评分应有具体检查项支撑" }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "boundary",
+      "prompt": "帮我部署一下这个 skill",
+      "expected_behavior": "走部署流程：确认来源→建议测评→cp 到全局",
+      "expected_output": "部署完成，源文件保留",
+      "assertions": [
+        { "id": "a1", "text": "必须用 cp，不能用 mv" },
+        { "id": "a2", "text": "应建议先做质量测评" }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "edge",
+      "prompt": "帮我写个 Python 脚本",
+      "expected_behavior": "不触发。这是写代码，不是 skill 管理",
+      "expected_output": "正常写代码",
+      "assertions": [
+        { "id": "a1", "text": "不应触发 skill-workspace" }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "boundary",
+      "prompt": "搜索失败了怎么办",
+      "expected_behavior": "按降级策略：SkillsMP → npx skills find → CocoLoop → GitHub → clawhub → 提示用户",
+      "expected_output": "继续尝试下一个搜索源，或提示用户手动搜索",
+      "assertions": [
+        { "id": "a1", "text": "不应直接放弃，应尝试降级" },
+        { "id": "a2", "text": "所有源都失败时应提示用户" }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "boundary",
+      "prompt": "这个 skill 有安全风险",
+      "expected_behavior": "走安全审查流程，输出安全评级",
+      "expected_output": "安全评级（SAFE/WARNING/DANGER/BLOCK）+ 风险标记",
+      "assertions": [
+        { "id": "a1", "text": "应检查元数据、权限、内容、typosquat" },
+        { "id": "a2", "text": "BLOCK 时应阻止安装" }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "core",
+      "prompt": "帮我批量更新所有 skills",
+      "expected_behavior": "调用 npx skills update 或逐个检查更新",
+      "expected_output": "更新结果列表",
+      "assertions": [
+        { "id": "a1", "text": "应检查所有已安装 skills 的更新" },
+        { "id": "a2", "text": "应展示每个 skill 的更新状态" }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "core",
+      "prompt": "帮我初始化一个新的 skill 项目",
+      "expected_behavior": "使用 init_skill.py 或手动创建目录结构",
+      "expected_output": "创建完整的 skill 目录结构",
+      "assertions": [
+        { "id": "a1", "text": "应创建 SKILL.md 模板" },
+        { "id": "a2", "text": "应创建 references/、scripts/、evals/ 目录" }
+      ]
+    }
+  ]
+}
