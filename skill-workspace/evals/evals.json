@@ -1,0 +1,141 @@
+{
+  "skill_name": "skill-workspace",
+  "version": "3.0.0",
+  "last_updated": "2026-06-09",
+  "evals": [
+    {
+      "id": 1,
+      "category": "dev-flow",
+      "prompt": "帮我开发一个代码格式化 skill",
+      "expected_behavior": "v3.0 完整开发流程：需求深挖（5-8 个问题）→ 全网搜索（SkillsMP → npx skills find → CocoLoop → GitHub → clawhub）→ 方案推送（A/B/C 对比）→ 用户确认 → 分阶段开发（P0→P1→P2）→ 阶段审查打分 → 循环返工 → 完整交付",
+      "expected_output": "完整 skill 包：SKILL.md + references/ + evals/",
+      "assertions": [
+        { "id": "a1", "text": "必须先做需求深挖，至少问 5 个问题（痛点、场景、频次、约束、期望）" },
+        { "id": "a2", "text": "需求深挖后必须做全网搜索，先找现成方案" },
+        { "id": "a3", "text": "搜索完成后必须推方案（推荐 + 备选），带评分表" },
+        { "id": "a4", "text": "用户确认方案后才开始开发，不能跳过确认" },
+        { "id": "a5", "text": "必须分阶段开发：P0（核心触发+路由）→ P1（搜索+安装）→ P2（高级功能）" },
+        { "id": "a6", "text": "每个阶段完成后必须审查打分（120 分制）" },
+        { "id": "a7", "text": "评分 < 96 分（80%）必须返工" },
+        { "id": "a8", "text": "最终交付必须包含 SKILL.md + references/ + evals/ 三部分" }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "review-flow",
+      "prompt": "帮我审查一下这个 skill 的质量",
+      "expected_behavior": "路由到 review 子技能：定位 Skill → 安全审查（4步协议） → 10 维度评分（120 分制） → 输出审查报告",
+      "expected_output": "审查报告：安全评级（SAFE/WARNING/DANGER/BLOCK）+ 10 维度评分表 + 改进建议",
+      "assertions": [
+        { "id": "a1", "text": "必须先加载 review 子技能（subskills/review/SKILL.md）" },
+        { "id": "a2", "text": "必须执行安全审查 4 步协议：元数据→权限范围→内容扫描→typosquat" },
+        { "id": "a3", "text": "安全评级为 BLOCK 时必须停止，不进入质量评分" },
+        { "id": "a4", "text": "质量评分必须包含 10 个维度，总分 120 分" },
+        { "id": "a5", "text": "每个维度必须有具体的检查项支撑评分" },
+        { "id": "a6", "text": "必须输出改进建议（不仅给分数，还要说明怎么改）" }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "search-flow",
+      "prompt": "帮我找个代码格式化的 skill",
+      "expected_behavior": "搜索流程：SkillsMP API → npx skills find → CocoLoop API → GitHub API → clawhub CLI，逐级降级",
+      "expected_output": "搜索结果列表，包含名称、描述、stars、GitHub 链接",
+      "assertions": [
+        { "id": "a1", "text": "必须先用 SkillsMP API 搜索（Tier 1，1.5M+ skills）" },
+        { "id": "a2", "text": "SkillsMP 无结果时必须降级到 npx skills find（Tier 2）" },
+        { "id": "a3", "text": "搜索结果必须展示格式化列表（名称 + 描述 + stars + 链接）" },
+        { "id": "a4", "text": "展示结果后必须询问用户选择" },
+        { "id": "a5", "text": "安装前必须走安全审查流程" },
+        { "id": "a6", "text": "所有搜索源都无结果时应建议走开发流程" }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "optimize-flow",
+      "prompt": "帮我优化这个 skill",
+      "expected_behavior": "优化流程：诊断（审查）→ 制定方案 → 执行改进 → 验证 → 回归",
+      "expected_output": "优化后的 skill + 优化前后对比 + 回归测试结果",
+      "assertions": [
+        { "id": "a1", "text": "必须先诊断：用审查流程找出具体问题" },
+        { "id": "a2", "text": "必须按优先级排列改进项" },
+        { "id": "a3", "text": "改进类型：description 不准→改触发词；workflow 有漏洞→补步骤；输出不合格→改格式" },
+        { "id": "a4", "text": "必须用同一个 case 验证改善效果" },
+        { "id": "a5", "text": "必须用 evals 做回归测试，确保没引入新问题" }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "deploy-flow",
+      "prompt": "帮我部署这个 skill",
+      "expected_behavior": "部署流程：确认来源 → 建议测评 → cp 到全局目录 → 验证部署 → 测试全局可用",
+      "expected_output": "部署完成，源文件保留，全局目录可访问",
+      "assertions": [
+        { "id": "a1", "text": "必须确认来源（工作区中的哪个 skill 目录）" },
+        { "id": "a2", "text": "必须建议先走审查流程做质量测评" },
+        { "id": "a3", "text": "必须用 cp 复制，不能用 mv（保留源文件）" },
+        { "id": "a4", "text": "必须验证部署结果（ls 检查全局目录）" },
+        { "id": "a5", "text": "必须测试全局可用性（Agent CLI 测试）" }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "manage-flow",
+      "prompt": "帮我管理已安装的 skill",
+      "expected_behavior": "管理流程：列出已安装 skill → 提供更新/卸载/列表操作选项",
+      "expected_output": "已安装 skill 列表 + 可用操作菜单",
+      "assertions": [
+        { "id": "a1", "text": "必须列出全局目录和工作区中的已安装 skill" },
+        { "id": "a2", "text": "必须提供操作选项：更新 / 卸载 / 列表" },
+        { "id": "a3", "text": "更新操作应检查最新版本（SkillsMP / CocoLoop / GitHub）" },
+        { "id": "a4", "text": "卸载操作必须先确认用户意图再执行" },
+        { "id": "a5", "text": "支持批量更新（npx skills update）" }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "dev-multilang",
+      "prompt": "帮我开发一个代码审查 skill，要求支持多种语言",
+      "expected_behavior": "v3.0 开发流程 + 多语言需求深挖：确认语言列表（Python/JS/TS/Go/Rust/Java 等）→ 搜索现成方案 → 分阶段开发 → 每阶段验证多语言支持",
+      "expected_output": "支持多语言的代码审查 skill，每个阶段审查验证语言覆盖",
+      "assertions": [
+        { "id": "a1", "text": "需求深挖阶段必须确认支持的语言列表" },
+        { "id": "a2", "text": "搜索阶段必须用多关键词搜索（code review multi-language 等）" },
+        { "id": "a3", "text": "方案推送必须说明每种语言的规则配置方式" },
+        { "id": "a4", "text": "分阶段开发时 P0 阶段至少支持 2 种语言" },
+        { "id": "a5", "text": "阶段审查时必须验证多语言支持的正确性" },
+        { "id": "a6", "text": "最终交付的 SKILL.md 必须包含语言支持列表和扩展指南" }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "dev-security",
+      "prompt": "帮我开发一个代码审查 skill，要求支持安全审查",
+      "expected_behavior": "v3.0 开发流程 + 安全审查需求深挖：确认安全规则（OWASP Top 10、注入检测、密钥泄露等）→ 搜索现成方案 → 分阶段开发 → 每阶段验证安全规则",
+      "expected_output": "支持安全审查的代码审查 skill，内置 OWASP Top 10 等安全规则",
+      "assertions": [
+        { "id": "a1", "text": "需求深挖阶段必须确认安全审查范围（OWASP Top 10、CWE、密钥泄露等）" },
+        { "id": "a2", "text": "搜索阶段必须搜索安全审查相关 skill（security review、OWASP scanner 等）" },
+        { "id": "a3", "text": "方案推送必须说明安全规则的分级和覆盖范围" },
+        { "id": "a4", "text": "分阶段开发时 P0 阶段必须实现基础安全检测" },
+        { "id": "a5", "text": "阶段审查时必须验证安全规则的有效性" },
+        { "id": "a6", "text": "最终交付必须包含安全规则清单和自定义扩展方式" }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "dev-performance",
+      "prompt": "帮我开发一个代码审查 skill，要求支持性能分析",
+      "expected_behavior": "v3.0 开发流程 + 性能分析需求深挖：确认性能指标（时间复杂度、空间复杂度、N+1 查询、内存泄漏等）→ 搜索现成方案 → 分阶段开发 → 每阶段验证性能分析能力",
+      "expected_output": "支持性能分析的代码审查 skill，能检测常见性能问题",
+      "assertions": [
+        { "id": "a1", "text": "需求深挖阶段必须确认性能分析维度（时间复杂度、空间复杂度、数据库查询、内存等）" },
+        { "id": "a2", "text": "搜索阶段必须搜索性能分析相关 skill（performance analyzer、profiler 等）" },
+        { "id": "a3", "text": "方案推送必须说明性能规则和误报控制策略" },
+        { "id": "a4", "text": "分阶段开发时 P0 阶段必须实现高频性能问题检测" },
+        { "id": "a5", "text": "阶段审查时必须验证性能规则的准确率" },
+        { "id": "a6", "text": "最终交付必须包含性能规则清单、阈值配置和扩展指南" }
+      ]
+    }
+  ]
+}
