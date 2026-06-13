@@ -12,7 +12,7 @@
       "assertions": [
         { "id": "a1", "text": "应先问用户这个任务重复出现过几次" },
         { "id": "a2", "text": "生成的 SKILL.md 前 250 字符应包含触发词" },
-        { "id": "a3", "text": "应使用 ${CLAUDE_SKILL_DIR} 引用参考资料路径" }
+        { "id": "a3", "text": "应使用 ${SKILL_DIR} 引用参考资料路径" }
       ]
     },
     {

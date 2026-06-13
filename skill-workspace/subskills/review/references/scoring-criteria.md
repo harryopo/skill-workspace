@@ -77,7 +77,7 @@
 - [ ] 遵循目录结构（SKILL.md + references/ + assets/ + scripts/）
 - [ ] 正文 ≤500 行
 - [ ] 参考资料放 references/ 目录
-- [ ] 使用 ${CLAUDE_SKILL_DIR} 引用文件
+- [ ] 使用 ${SKILL_DIR} 引用文件
 
 **评分：**
 | 分数段 | 标准 |

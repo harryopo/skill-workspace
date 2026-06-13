@@ -10,6 +10,7 @@
 |-------|----------|----------|
 | Claude Code | `~/.claude/skills/<name>/` | `.claude/skills/<name>/` |
 | Codex CLI | `~/.codex/skills/<name>/` | `.codex/skills/<name>/` |
+| ChatGPT 等 | `~/.openai/skills/<name>/` | `.openai/skills/<name>/` |
 | 通用 | `~/.skills/<name>/` | `.skills/<name>/` |
 
 **本指南使用 `{全局skills目录}` 作为占位符，请替换为你的 Agent 对应的路径。**
@@ -48,6 +49,7 @@
    # 使用你的 Agent CLI 测试
    # Claude Code: claude -p "使用 {name} 完成 XXX 任务"
    # Codex CLI:   codex "使用 {name} 完成 XXX 任务"
+   # ChatGPT 等: {agent-cli} -p "使用 {name} 完成 XXX 任务"
    ```
 
 ## 版本管理建议

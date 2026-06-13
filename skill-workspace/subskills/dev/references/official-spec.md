@@ -1,7 +1,7 @@
-# Claude Code Skill 官方规范
+# Agent Skill 官方规范
 
-> 来源：code.claude.com/docs/en/skills
-> 仅包含 Claude Code 官方文档中明确定义的内容
+> 来源：Agent Skill 规范文档
+> 适用于所有支持 SKILL.md 的 Agent（Claude Code、Codex CLI、ChatGPT 等）
 
 ---
 
@@ -72,7 +72,7 @@ shell: bash                       # bash | powershell
 
 ## 四、调用控制矩阵
 
-| 配置 | 用户可调用 | Claude 可自动调用 | description 在上下文 |
+| 配置 | 用户可调用 | Agent 可自动调用 | description 在上下文 |
 |------|-----------|------------------|-------------------|
 | 默认 | ✅ | ✅ | ✅ |
 | disable-model-invocation: true | ✅ | ❌ | ❌ |
@@ -100,8 +100,8 @@ shell: bash                       # bash | powershell
 | `$ARGUMENTS` | 用户传入的所有参数 |
 | `$ARGUMENTS[N]` | 按索引访问第 N 个参数 |
 | `$N` | `$ARGUMENTS[N]` 的简写 |
-| `${CLAUDE_SKILL_DIR}` | SKILL.md 所在目录绝对路径 |
-| `${CLAUDE_SESSION_ID}` | 当前会话 ID |
+| `${SKILL_DIR}` | SKILL.md 所在目录绝对路径 |
+| `${SESSION_ID}` | 当前会话 ID |
 
 ---
 
@@ -121,8 +121,14 @@ find . -name "*.md" | head -20
 
 | 优先级 | 路径 | 范围 |
 |--------|------|------|
-| 1 | `~/.claude/skills/<name>/SKILL.md` | 用户全局 |
-| 2 | `.claude/skills/<name>/SKILL.md` | 当前项目 |
+| 1 | `~/.skills/<name>/SKILL.md` | 用户全局（通用） |
+| 2 | `.skills/<name>/SKILL.md` | 当前项目 |
+
+**注意：** 不同 Agent 的路径可能不同：
+- Claude Code: `~/.claude/skills/`
+- Codex CLI: `~/.codex/skills/`
+- Cursor: `~/.cursor/skills/`
+- 通用: `~/.skills/`
 
 ---
 
@@ -141,5 +147,5 @@ find . -name "*.md" | head -20
 - description 前 250 字符包含触发词
 - 正文 ≤500 行
 - 参考资料放 references/
-- 用 ${CLAUDE_SKILL_DIR} 引用文件
+- 用 ${SKILL_DIR} 引用文件
 - 复杂任务用 context: fork

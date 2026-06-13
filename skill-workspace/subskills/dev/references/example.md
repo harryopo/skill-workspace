@@ -162,9 +162,9 @@ effort: high
 
 ## 参考资料
 
-- 代码规范：`${CLAUDE_SKILL_DIR}/references/coding-standards.md`
-- 安全指南：`${CLAUDE_SKILL_DIR}/references/security-guidelines.md`
-- 性能优化：`${CLAUDE_SKILL_DIR}/references/performance-tips.md`
+- 代码规范：`${SKILL_DIR}/references/coding-standards.md`
+- 安全指南：`${SKILL_DIR}/references/security-guidelines.md`
+- 性能优化：`${SKILL_DIR}/references/performance-tips.md`
 
 ## 注意事项
 
@@ -313,5 +313,5 @@ effort: high
 3. **触发条件**：精确匹配 + 模糊匹配 + 不触发条件
 4. **工作流程**：三步清晰流程
 5. **输出规范**：完整模板和格式
-6. **参考资料**：使用 ${CLAUDE_SKILL_DIR} 引用
+6. **参考资料**：使用 ${SKILL_DIR} 引用
 7. **注意事项**：必须遵守和禁止行为

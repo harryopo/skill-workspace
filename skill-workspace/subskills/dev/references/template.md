@@ -73,7 +73,7 @@ allowed-tools: Read Write Edit Glob Grep
 ### 第二步：核心处理
 
 1. **准备阶段**
-   - 读取参考资料：`${CLAUDE_SKILL_DIR}/references/{xxx}.md`
+   - 读取参考资料：`${SKILL_DIR}/references/{xxx}.md`
    - 加载配置文件（如有）
 
 2. **执行核心逻辑**
@@ -126,8 +126,8 @@ allowed-tools: Read Write Edit Glob Grep
 
 ## 参考资料
 
-- {文件1}：`${CLAUDE_SKILL_DIR}/references/{file1}.md` - {说明}
-- {文件2}：`${CLAUDE_SKILL_DIR}/references/{file2}.md` - {说明}
+- {文件1}：`${SKILL_DIR}/references/{file1}.md` - {说明}
+- {文件2}：`${SKILL_DIR}/references/{file2}.md` - {说明}
 
 ## 注意事项
 
